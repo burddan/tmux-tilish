@@ -151,12 +151,18 @@ fi
 # Switch layout with Alt + <mnemonic key>. The mnemonics are `s` and `S` for
 # layouts Vim would generate with `:split`, and `v` and `V` for `:vsplit`.
 # The remaining mappings based on `z` and `t` should be quite obvious.
-bind_layout "${mod}s" 'main-horizontal'
-bind_layout "${mod}S" 'even-vertical'
-bind_layout "${mod}v" 'main-vertical'
-bind_layout "${mod}V" 'even-horizontal'
-bind_layout "${mod}t" 'tiled'
-bind_layout "${mod}z" 'zoom'
+
+
+#MUDANÇAS
+bind_layout "${mod}f" 'zoom'
+bind_layout "M-C-q" 'main-horinzontal'
+bind_layout "M-q" 'main-vertical'
+
+tmux bind -n 'C-M-h' "resize-pane -L 10"
+tmux bind -n 'C-M-l' "resize-pane -R 10"
+tmux bind -n 'C-M-j' "select-pane -t :.+"
+tmux bind -n 'C-M-k' "select-pane -t :.-"
+
 
 # Refresh the current layout (e.g. after deleting a pane).
 if [ -z "$legacy" ]
